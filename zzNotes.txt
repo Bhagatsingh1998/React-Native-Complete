@@ -1,3 +1,30 @@
+1.17. Useful Resources & Links
+---
+
+1.16. How to get the Most out of This Course
+---
+
+1.15. Course Outline
+---
+
+1.14. Running the App on an iOS Simulator
+---
+
+1.13. Running the App on an Android Emulator
+---
+
+1.12
+---
+
+1.11. Course Requirements
+---
+
+1.10. React Native Alternatives
+---
+
+1.9. React Native Apps Are Hard Work!
+---
+
 1.8. Working on Our First App
 
 .expo : holds the configrations for expo, no need to touch
@@ -10,6 +37,7 @@ app.json : holds configrations for our react native app powered by expo
 babel.config.js: configrations for how js code will be optimised and compiled
 packages.json: manages the dependencies
 
+App.js
 
 
 
