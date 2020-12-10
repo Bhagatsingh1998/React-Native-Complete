@@ -2,24 +2,46 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
-// we are getting our desired design but by using inline style which is not good
 export default function App() {
+  // making the 'add' btn functional and displaying down
+  const [courseGoals, setCourseGols] = React.useState([]);
+
+
+  const [enteredGoal, setEnteredGoal] = React.useState("");
+  // function goalInputHandler(enteredText) {
+  //   setEnteredGoal(enteredText);
+  // };
+  const goalInputHandler = (enteredText) => {
+    setEnteredGoal(enteredText);
+  };
+
+  const addGoalHandler = () => {
+    // console.log(enteredGoal);
+    // can give problems
+    // setCourseGols([...courseGoals, enteredGoal]);
+
+    setCourseGols(currentGoals => [...currentGoals, enteredGoal]);
+  }
+
   return (
     <View style={styles.sreen}>
       <View style={styles.inputContainer}>
-        <TextInput placeholder="Course Goal" style={styles.input} />
-        <Button title="ADD" />
+        <TextInput 
+          placeholder="Course Goal" 
+          style={styles.input}
+          // 
+          value={enteredGoal} 
+          onChangeText={goalInputHandler} />
+        <Button 
+          title="ADD"
+          onPress={addGoalHandler} /> 
       </View>
       <View>{/* List of goals */}</View>
     </View>
   );
 }
 
-// thus, using a StyleSheet object provided by RN.
-// we can even craete our own js object for style but StyleSheet object also do performance optimization and it also dectects incorrect styling
-
 const styles = StyleSheet.create({
-  // creating nested objcts for style
   sreen: {
     padding: 50,
   },
