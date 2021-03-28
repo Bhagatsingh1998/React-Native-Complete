@@ -1,3 +1,7 @@
+2.18. Passing Data Between Components
+GoalInput.js
+App.js
+
 2.17. Splitting the App Into Components
 GoalInput :  newFile
 GoalItem :  newFile

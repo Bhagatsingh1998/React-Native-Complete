@@ -15,49 +15,37 @@ import GoalInput from './components/GoalInput';
 
 export default function App() {
   const [courseGoals, setCourseGols] = React.useState([]);
-  const [enteredGoal, setEnteredGoal] = React.useState("");
+  // const [enteredGoal, setEnteredGoal] = React.useState("");
 
-  const goalInputHandler = (enteredText) => {
-    setEnteredGoal(enteredText);
-  };
+  
 
-  const addGoalHandler = () => {
-    // restoring the data, adding key field
+  const addGoalHandler = (goalTitle) => {
     setCourseGols((currentGoals) => [
-      // ...currentGoals, enteredGoal
       ...currentGoals,
-      // { value: enteredGoal, key: new Date().toISOString().toString() },
-      { value: enteredGoal, uid: new Date().toISOString().toString() },
+      { value: goalTitle, uid: new Date().toISOString().toString() },
     ]);
   };
 
   return (
-    <View style={styles.sreen}>
-      <View style={styles.inputContainer}>
+    <View style={styles.screen}>
+      {/* <View style={styles.inputContainer}>
         <TextInput
           placeholder="Course Goal"
           style={styles.input}
-          //
           value={enteredGoal}
           onChangeText={goalInputHandler}
         />
         <Button title="ADD" onPress={addGoalHandler} />
-      </View>
+      </View> */}
+
+      <GoalInput addGoalHandler={text => addGoalHandler(text)}/>
+      
       <View>
         <FlatList
           keyExtractor={(item, index) => item.uid}
           data={courseGoals}
           renderItem={(itemData) => (
-            //
-            // <View style={styles.listItem}>
-            //   <Text>{itemData.item.value}</Text>
-            // </View>
-
-            // 
-            // <GoalItem>{itemData.item.value}</GoalItem>
-
             <GoalItem title={itemData.item.value} />
-
           )}
         /> 
       </View>
@@ -66,26 +54,19 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  sreen: {
+  screen: {
     padding: 50,
   },
-  inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  input: {
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
-    marginBottom: 3,
-    padding: 10,
-    width: "80%",
-  },
-  // listItem: {
+  // inputContainer: {
+  //   flexDirection: "row",
+  //   justifyContent: "space-between",
+  //   alignItems: "center",
+  // },
+  // input: {
+  //   borderBottomColor: "black",
+  //   borderBottomWidth: 1,
+  //   marginBottom: 3,
   //   padding: 10,
-  //   backgroundColor: `#ccc`,
-  //   borderColor: "black",
-  //   borderWidth: 1,
-  //   marginVertical: 10,
+  //   width: "80%",
   // },
 });
