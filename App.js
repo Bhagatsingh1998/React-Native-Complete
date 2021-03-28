@@ -7,6 +7,7 @@ import {
   TextInput,
   Button,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 export default function App() {
@@ -18,7 +19,13 @@ export default function App() {
   };
 
   const addGoalHandler = () => {
-    setCourseGols((currentGoals) => [...currentGoals, enteredGoal]);
+    // restoring the data, adding key field
+    setCourseGols((currentGoals) => [
+      // ...currentGoals, enteredGoal
+      ...currentGoals,
+      // { value: enteredGoal, key: new Date().toISOString().toString() },
+      { value: enteredGoal, uid: new Date().toISOString().toString() },
+    ]);
   };
 
   return (
@@ -34,33 +41,41 @@ export default function App() {
         <Button title="ADD" onPress={addGoalHandler} />
       </View>
       <View>
-        {/* {courseGoals.map((goal) => (
-          // adding key property to prevent warrning 
-          <Text key={goal}>{goal}</Text>
-        ))} */}
-
-        {/* 
-          {courseGoals.map((goal) => (
-            // we can style Text component also but its has options as compared to View component thus, warpping it with View.
-            // As View is parent component, 'key' get applied to View
-
-            <View key={goal} style={styles.listItem}>
-              <Text >{goal}</Text>
+        {/* ScrollView is good when number of items are limited in a list as it will render all the data which will be not seen on the screen. Thus scrollview is inefficinet for very long lists */}
+        {/* for long list, FlatList component i used. Flat list takes 2 imp args. data: takes a array as data. renderItem: its a function which iterates over the data array one by one and render it. */}
+        {/* in this, we dont have to pass key, as it expects staructured ata which will have key value in it */}
+        {/* to access the value, '.item' is used on itemData  */}
+        {/* <FlatList
+          data={courseGoals}
+          renderItem={(itemData) => (
+            <View style={styles.listItem}>
+              <Text>{itemData.item}</Text>
             </View>
-          ))} 
-        */}
+          )}
+        />  */}
 
-        {/* After adding certain amount of goals, list goals is going beyound the screen and we are not able to scroll unlike web page. hence using scrollView component */}
-        {/* it has number of properties which we can add, like horizontal: scroll horizontally*/}
-        {/* <ScrollView horizontal> */}
-        
-        <ScrollView>
-          {courseGoals.map((goal) => (
-            <View key={goal} style={styles.listItem}>
-              <Text>{goal}</Text>
+
+        {/*our above array data is not strutctured ie, its not haveing any key value. Rearraging our data in array */}
+        {/* <FlatList
+          data={courseGoals}
+          renderItem={(itemData) => (
+            <View style={styles.listItem}>
+              <Text>{itemData.item.value}</Text>
             </View>
-          ))}
-        </ScrollView>
+          )}
+        />  */}
+
+        {/* it maky happen that we dont use 'key' value in array, but instaed of it rename 'key' to 'uid'. at that time we have to tell Flatlist to take 'uid' value as key */}
+        {/* FlatList has method ketExtrator which which extrats key name by default from an array of data */}
+        <FlatList
+          keyExtractor={(item, index) => item.uid}
+          data={courseGoals}
+          renderItem={(itemData) => (
+            <View style={styles.listItem}>
+              <Text>{itemData.item.value}</Text>
+            </View>
+          )}
+        /> 
       </View>
     </View>
   );
@@ -87,8 +102,6 @@ const styles = StyleSheet.create({
     backgroundColor: `#ccc`,
     borderColor: "black",
     borderWidth: 1,
-    // eg of RN styles are like CSS but not exact CSS.
-    // marginVertical will give margin on top an bottom.
     marginVertical: 10,
   },
 });
