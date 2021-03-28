@@ -1,5 +1,18 @@
-2.5. Working with Core Components
+2.17. Splitting the App Into Components
+GoalInput :  newFile
+GoalItem :  newFile
 
+GoalItem
+App.js
+
+2.16
+---
+
+2.6 - 2.15
+App.js
+
+2.5. Working with Core Components
+App.js
 
 2.4. Planning the App
 ---
