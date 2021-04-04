@@ -26,26 +26,23 @@ export default function App() {
     ]);
   };
 
+  const deleteHandler = goalId => {
+    let updatedCourseGoals = courseGoals.filter(course => course.uid !== goalId)
+    return setCourseGols(() => [...updatedCourseGoals]);
+  }
+
   return (
     <View style={styles.screen}>
-      {/* <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Course Goal"
-          style={styles.input}
-          value={enteredGoal}
-          onChangeText={goalInputHandler}
-        />
-        <Button title="ADD" onPress={addGoalHandler} />
-      </View> */}
-
       <GoalInput addGoalHandler={text => addGoalHandler(text)}/>
-      
       <View>
         <FlatList
           keyExtractor={(item, index) => item.uid}
           data={courseGoals}
           renderItem={(itemData) => (
-            <GoalItem title={itemData.item.value} />
+            // <GoalItem title={itemData.item.value} onDelete={() => {console.log('clicked')}} />
+            
+            // 2.20
+            <GoalItem title={itemData.item.value} onDelete={() => deleteHandler(itemData.item.uid)} />
           )}
         /> 
       </View>
@@ -57,16 +54,4 @@ const styles = StyleSheet.create({
   screen: {
     padding: 50,
   },
-  // inputContainer: {
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   alignItems: "center",
-  // },
-  // input: {
-  //   borderBottomColor: "black",
-  //   borderBottomWidth: 1,
-  //   marginBottom: 3,
-  //   padding: 10,
-  //   width: "80%",
-  // },
 });

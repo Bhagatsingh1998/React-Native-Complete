@@ -1,3 +1,14 @@
+2.20. Deleting Items
+
+GoalItem
+App
+
+2.19. Working with Touchable Components
+we want to delete the goal list item when we touch them. but we simply cant use "onPress" event in react.  
+
+GoalItem
+App
+
 2.18. Passing Data Between Components
 GoalInput.js
 App.js
