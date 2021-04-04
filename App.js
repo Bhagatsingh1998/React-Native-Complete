@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-// import { StyleSheet, View, FlatList } from "react-native";
+import React, { useState } from "react";
 import { StyleSheet, View, FlatList, Button } from "react-native";
 
 import GoalItem from "./components/GoalItem";
@@ -7,7 +6,6 @@ import GoalInput from "./components/GoalInput";
 
 export default function App() {
   const [courseGoals, setCourseGols] = React.useState([]);
-  // setting state for modal
   const [isAddMode, setIsAddMode] = useState(false);
 
   const addGoalHandler = (goalTitle) => {
@@ -15,6 +13,15 @@ export default function App() {
       ...currentGoals,
       { value: goalTitle, uid: new Date().toISOString().toString() },
     ]);
+    // closing the modal after ading goal
+    setIsAddMode(false);
+
+    // we can have two or more state updates together, react will batch all the state change and the rerender the component and not individually.
+  };
+
+  // disappering the modal onpress of cancel button
+  const cancelBtnHandler = () => {
+    setIsAddMode(false);
   };
 
   const deleteHandler = (goalId) => {
@@ -26,10 +33,13 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      {/*  */}
-      <Button title="Add New Goal" onPress={() => setIsAddMode(true) } />
-      {/* passing prop for modal */}
-      <GoalInput visible={isAddMode} addGoalHandler={(text) => addGoalHandler(text)} />
+      <Button title="Add New Goal" onPress={() => setIsAddMode(true)} />
+      <GoalInput
+        visible={isAddMode}
+        addGoalHandler={(text) => addGoalHandler(text)}
+        // 
+        onCancle={cancelBtnHandler}
+      />
       <View>
         <FlatList
           keyExtractor={(item, index) => item.uid}

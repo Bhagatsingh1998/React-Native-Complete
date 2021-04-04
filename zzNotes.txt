@@ -1,3 +1,10 @@
+2.23. Closing the Modal & Clearing Input
+App
+GoalInput
+
+2.22. More Flexbox Styling
+GoalInput : styling 
+
 2.21. Adding a Modal Overlay
 GoalInput
 App

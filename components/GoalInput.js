@@ -1,6 +1,4 @@
 import React from "react";
-// import { View, TextInput, Button, StyleSheet } from "react-native";
-
 import { View, TextInput, Button, StyleSheet, Modal } from "react-native";
 
 const GoalInput = (props) => {
@@ -9,10 +7,13 @@ const GoalInput = (props) => {
     setEnteredGoal(enteredText);
   };
 
+  // after adding the goal, clearing the textfiled value
+  const addGoalHandler = () => {
+    props.addGoalHandler(enteredGoal);
+    setEnteredGoal('');
+  }
+
   return (
-    // after adding modal, we are not getting the pading which we set to screen in App.js
-    // modal should be visible when we click "add goal button" else invisible. going to app.js
-    // animationType :  the way modal appers on screen
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
         <TextInput
@@ -23,17 +24,25 @@ const GoalInput = (props) => {
         />
         <Button
           title="ADD"
-          onPress={props.addGoalHandler.bind(this, enteredGoal)}
+          // 
+          onPress={addGoalHandler}
         />
+        {/*  */}
+        <Button title="CANCLE" color="red" onPress={props.onCancle} />
       </View>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
+  // 2.22
+  // bydefault "View" takes space as much as its child component takes. hence, setting flex 1, so that it takes full size of screen.
+  // modal takes full screen width and height.
   inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    // flex: 1,
+    // or
+    height : "100%",
+    justifyContent: "center",
     alignItems: "center",
   },
   input: {
@@ -42,6 +51,8 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     padding: 10,
     width: "80%",
+    // 
+    marginBottom: 10
   },
 });
 
