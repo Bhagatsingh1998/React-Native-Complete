@@ -21,9 +21,7 @@ const GoalInput = (props) => {
           value={enteredGoal}
           onChangeText={goalInputHandler}
         />
-        {/* to style any components, we need to wrap them with View component always. */}
         <View style={styles.btnContainer}>
-          {/* to buttons we cannot add width property neith inline style or with stylesheet object. thus, wrapping the button with View */}
           <View style={styles.button}>
             <Button title="ADD" onPress={addGoalHandler} />
           </View>

@@ -9,6 +9,11 @@ export default function App() {
   const [isAddMode, setIsAddMode] = useState(false);
 
   const addGoalHandler = (goalTitle) => {
+    if (goalTitle.length === 0) {
+      setIsAddMode(false);
+      return;
+    }
+
     setCourseGols((currentGoals) => [
       ...currentGoals,
       { value: goalTitle, uid: new Date().toISOString().toString() },
@@ -24,7 +29,7 @@ export default function App() {
     let updatedCourseGoals = courseGoals.filter(
       (course) => course.uid !== goalId
     );
-    return setCourseGols(() => [...updatedCourseGoals]);
+    setCourseGols(() => [...updatedCourseGoals]);
   };
 
   return (
@@ -33,7 +38,6 @@ export default function App() {
       <GoalInput
         visible={isAddMode}
         addGoalHandler={(text) => addGoalHandler(text)}
-        //
         onCancle={cancelBtnHandler}
       />
       <View>
