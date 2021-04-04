@@ -13,13 +13,9 @@ export default function App() {
       ...currentGoals,
       { value: goalTitle, uid: new Date().toISOString().toString() },
     ]);
-    // closing the modal after ading goal
     setIsAddMode(false);
-
-    // we can have two or more state updates together, react will batch all the state change and the rerender the component and not individually.
   };
 
-  // disappering the modal onpress of cancel button
   const cancelBtnHandler = () => {
     setIsAddMode(false);
   };
@@ -37,7 +33,7 @@ export default function App() {
       <GoalInput
         visible={isAddMode}
         addGoalHandler={(text) => addGoalHandler(text)}
-        // 
+        //
         onCancle={cancelBtnHandler}
       />
       <View>

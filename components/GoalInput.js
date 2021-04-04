@@ -7,11 +7,10 @@ const GoalInput = (props) => {
     setEnteredGoal(enteredText);
   };
 
-  // after adding the goal, clearing the textfiled value
   const addGoalHandler = () => {
     props.addGoalHandler(enteredGoal);
-    setEnteredGoal('');
-  }
+    setEnteredGoal("");
+  };
 
   return (
     <Modal visible={props.visible} animationType="slide">
@@ -22,26 +21,24 @@ const GoalInput = (props) => {
           value={enteredGoal}
           onChangeText={goalInputHandler}
         />
-        <Button
-          title="ADD"
-          // 
-          onPress={addGoalHandler}
-        />
-        {/*  */}
-        <Button title="CANCLE" color="red" onPress={props.onCancle} />
+        {/* to style any components, we need to wrap them with View component always. */}
+        <View style={styles.btnContainer}>
+          {/* to buttons we cannot add width property neith inline style or with stylesheet object. thus, wrapping the button with View */}
+          <View style={styles.button}>
+            <Button title="ADD" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="CANCLE" color="red" onPress={props.onCancle} />
+          </View>
+        </View>
       </View>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  // 2.22
-  // bydefault "View" takes space as much as its child component takes. hence, setting flex 1, so that it takes full size of screen.
-  // modal takes full screen width and height.
   inputContainer: {
-    // flex: 1,
-    // or
-    height : "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -51,8 +48,16 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     padding: 10,
     width: "80%",
-    // 
-    marginBottom: 10
+    marginBottom: 10,
+  },
+  //
+  btnContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "60%",
+  },
+  button: {
+    width: "40%",
   },
 });
 
