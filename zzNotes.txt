@@ -1,5 +1,8 @@
-2.20. Deleting Items
+2.21. Adding a Modal Overlay
+GoalInput
+App
 
+2.20. Deleting Items
 GoalItem
 App
 

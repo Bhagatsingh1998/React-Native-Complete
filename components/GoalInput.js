@@ -1,22 +1,32 @@
 import React from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+// import { View, TextInput, Button, StyleSheet } from "react-native";
+
+import { View, TextInput, Button, StyleSheet, Modal } from "react-native";
 
 const GoalInput = (props) => {
-  const [enteredGoal, setEnteredGoal] = React.useState(""); 
+  const [enteredGoal, setEnteredGoal] = React.useState("");
   const goalInputHandler = (enteredText) => {
     setEnteredGoal(enteredText);
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        placeholder="Course Goal"
-        style={styles.input}
-        value={enteredGoal}
-        onChangeText={goalInputHandler}
-      />
-      <Button title="ADD" onPress={props.addGoalHandler.bind(this, enteredGoal)} />
-    </View>
+    // after adding modal, we are not getting the pading which we set to screen in App.js
+    // modal should be visible when we click "add goal button" else invisible. going to app.js
+    // animationType :  the way modal appers on screen
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Course Goal"
+          style={styles.input}
+          value={enteredGoal}
+          onChangeText={goalInputHandler}
+        />
+        <Button
+          title="ADD"
+          onPress={props.addGoalHandler.bind(this, enteredGoal)}
+        />
+      </View>
+    </Modal>
   );
 };
 
