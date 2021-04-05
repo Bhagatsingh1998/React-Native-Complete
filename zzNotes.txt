@@ -1,3 +1,10 @@
+4.9. Components & Styling
+---
+
+4.8. Extracting a Card Component
+Components/Card : newFile
+StartGameSceen
+
 4.7. React Native Styling vs CSS Styling
 ---
 

@@ -1,18 +1,22 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+//
+import Card from "../components/Card";
 
 export default function StartGameSceen() {
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Start Game Screen</Text>
-      <View style={styles.inputContainer}>
+      <Card style={styles.inputContainer}>
+        {/* <View style={styles.inputContainer}> */}
         <Text>Select a Number</Text>
         <TextInput />
         <View style={styles.btnContainer}>
           <Button title="Reset" onPress={() => {}} />
           <Button title="Confirm" onPress={() => {}} />
         </View>
-      </View>
+        {/* </View> */}
+      </Card>
     </View>
   );
 }
@@ -31,23 +35,18 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: "80%",
     alignItems: "center",
-
-
-    // shadow property ONLY apply on iOS.
-    // giving shadow : it takes 4 attributes : color, offset(takes an object, takes height and width), opacity(1: fully opaque), radius(how shapre the shawdow is)
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 0, height: 2
-    },
-    shadowOpacity: 0.26,
-    shadowRadius: 6,
-    backgroundColor: 'white',
-
-    // to apply shadow on android, elevation property is used.
-    elevation : 15,
-    padding: 15,
-    borderRadius: 10
-  
+    // no need, we using card comp.
+    // shadowColor: "black",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.26,
+    // shadowRadius: 6,
+    // backgroundColor: "white",
+    // elevation: 15,
+    // padding: 15,
+    // borderRadius: 10,
   },
   btnContainer: {
     flexDirection: "row",
@@ -55,6 +54,4 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     padding: 15,
   },
-
- 
 });
