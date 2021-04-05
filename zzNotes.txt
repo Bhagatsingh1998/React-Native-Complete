@@ -1,3 +1,6 @@
+4.5. Working on the Layout
+StartGameScreen
+
 4.4. Adding a Screen Component
 screens/StartGameScreen : newFile
 App
@@ -5,7 +8,6 @@ App
 4.3. Adding a Custom Header Component
 Components/Header : newFile
 App
-
 
 4.2. Setup & App Planning
 ---
