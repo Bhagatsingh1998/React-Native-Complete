@@ -1,21 +1,29 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-//
 import Card from "../components/Card";
+// can even write "colors" in lower case
+import Colors from './../constants/colors';
 
 export default function StartGameSceen() {
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Start Game Screen</Text>
       <Card style={styles.inputContainer}>
-        {/* <View style={styles.inputContainer}> */}
         <Text>Select a Number</Text>
         <TextInput />
         <View style={styles.btnContainer}>
-          <Button title="Reset" onPress={() => {}} />
-          <Button title="Confirm" onPress={() => {}} />
+          {/* giving same width to both the buttons, thus warpping them with View */}
+          {/* <View style={styles.btn}><Button color="#c717fc" title="Reset" onPress={() => {}} /></View>
+          <View style={styles.btn}><Button color="#f7287b" title="Confirm" onPress={() => {}} /></View> */}
+
+
+          <View style={styles.btn}>
+            <Button color={Colors.accent} title="Reset" onPress={() => {}} />
+          </View>
+          <View style={styles.btn}>
+            <Button color={Colors.primary} title="Confirm" onPress={() => {}} />
+          </View>
         </View>
-        {/* </View> */}
       </Card>
     </View>
   );
@@ -35,23 +43,14 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: "80%",
     alignItems: "center",
-    // no need, we using card comp.
-    // shadowColor: "black",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 2,
-    // },
-    // shadowOpacity: 0.26,
-    // shadowRadius: 6,
-    // backgroundColor: "white",
-    // elevation: 15,
-    // padding: 15,
-    // borderRadius: 10,
   },
   btnContainer: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-around",
     padding: 15,
+  },
+  btn: {
+    width: "40%",
   },
 });
