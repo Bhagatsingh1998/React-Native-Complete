@@ -1,3 +1,7 @@
+4.4. Adding a Screen Component
+screens/StartGameScreen : newFile
+App
+
 4.3. Adding a Custom Header Component
 Components/Header : newFile
 App
