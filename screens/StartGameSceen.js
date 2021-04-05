@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import Card from "../components/Card";
-// can even write "colors" in lower case
-import Colors from './../constants/colors';
+import Colors from "./../constants/colors";
+//
+import Input from "./../components/Input";
 
 export default function StartGameSceen() {
   return (
@@ -10,13 +11,20 @@ export default function StartGameSceen() {
       <Text style={styles.title}>Start Game Screen</Text>
       <Card style={styles.inputContainer}>
         <Text>Select a Number</Text>
-        <TextInput />
+        {/*  */}
+        {/* <Input style={styles.input} /> */}
+
+        {/* passing few extra props */}
+        <Input
+          style={styles.input}
+          blurOnSubmit
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="number-pad"
+          maxLength={2}
+        />
+
         <View style={styles.btnContainer}>
-          {/* giving same width to both the buttons, thus warpping them with View */}
-          {/* <View style={styles.btn}><Button color="#c717fc" title="Reset" onPress={() => {}} /></View>
-          <View style={styles.btn}><Button color="#f7287b" title="Confirm" onPress={() => {}} /></View> */}
-
-
           <View style={styles.btn}>
             <Button color={Colors.accent} title="Reset" onPress={() => {}} />
           </View>
@@ -52,5 +60,10 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: "40%",
+  },
+  //
+  input: {
+    width: 50,
+    textAlign: "center",
   },
 });

@@ -1,3 +1,7 @@
+4.11. Configuring & Styling a TextInput
+Components/Input : newFile
+StartGameSceen
+
 4.10. Color Theming with Constants
 StartGameSceen
 constants/colors : newFile
